@@ -184,6 +184,45 @@
                 font-size: 10px;
                 font-weight: bold;
             }
+
+            #custom-filemanager {
+                margin-right: 0;
+                padding-left: 16px;
+                padding-right: 8px;
+                border-radius: 10px 0px 0px 10px;
+                color: #ffffff;
+                background: #383c4a;
+            }
+
+            #bluetooth {
+                margin-right: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                border-radius: 0;
+                color: #ffffff;
+                background: #383c4a;
+            }
+
+            #custom-cliphist {
+            margin-right: 8px;
+            padding-left: 8px;
+            padding-right: 16px;
+            border-radius: 0px 10px 10px 0px;
+            color: #ffffff;
+            background: #383c4a;
+            }
+
+            #custom-filemanager:hover {
+            color: rgba(255, 255, 255, 0.7);
+            }
+
+            #bluetooth:hover {
+            color: rgba(255, 255, 255, 0.7);
+            }
+
+            #custom-cliphist:hover {
+            color: rgba(255, 255, 255, 0.7);
+            }
         '';
           settings = {
             mainBar = {
@@ -195,13 +234,15 @@
                 "custom/kblayout"
                 "keyboard-state"
                 "hyprland/submap"
+                "custom/filemanager"
+                "bluetooth"
+                "custom/cliphist"
                 "custom/cava"
               ];
               modules-right = [
                 "clock"
                 "pulseaudio"
                 "custom/mem"
-                "cpu"
                 "backlight"
                 "battery"
               ];
@@ -297,9 +338,27 @@
               };
 
               "custom/cava" = {
-                format = "{}";
-                exec = "sh ~/.config/waybar/scripts/cava.sh";
-                tooltip = false;
+                  format = "{}";
+                  exec = "sh ~/.config/waybar/scripts/cava.sh";
+                  tooltip = false;
+              };
+
+              "bluetooth" = {
+                  format = "";
+                  on-click = "overskride";
+                  tooltip = false;
+              };
+
+              "custom/filemanager" = {
+                  format = "";
+                  on-click = "sh ~/.config/waybar/scripts/filemanager.sh";
+                  tooltip = false;
+              };
+
+              "custom/cliphist" = {
+                  format = "";
+                  on-click = "cliphist list | wofi --dmenu | cliphist decode | wl-copy";
+                  tooltip = false;
               };
             };
           };
