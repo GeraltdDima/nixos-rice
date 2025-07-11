@@ -1,5 +1,5 @@
 let
-  wallpaperPath = "/home/dima/Downloads/nixos.png";
+  wallpaperPath = "/home/dima/Downloads/396783-wallpaper-anime-girl-flower-umbrella-raining-4k.jpg";
 in
 {
   wayland.windowManager.hyprland = {
@@ -25,13 +25,12 @@ in
       exec-once = mako
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
-      exec-once = dbus-update-activation-environment --systemd --all
 
       general {
         gaps_in = 5
         gaps_out = 20
         border_size = 1
-        col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+        col.active_border = rgba(595959aa)
         col.inactive_border = rgba(595959aa)
         resize_on_border = true
         allow_tearing = false
@@ -127,10 +126,11 @@ in
       bind = ALT, B, exec, grim ~/Pictures/screenshot.png
       bind = $mainMod, P, exec, overskride
       bind = $mainMod, C, exec, code
-      bind = $mainMod, Z, exec, zeditor
+      bind = $mainMod, Z, exec, zen
       bind = $mainMod, S, exec, spotify
       bind = $mainMod, T, exec, Telegram
       bind = $mainMod, Y, exec, firefox youtube.com
+	  bind = SUPER SHIFT, P, exec, sh ~/.config/home-manager/powermenu/powermenu.sh
 
       bind = ALT, H , movefocus, l
       bind = ALT, L, movefocus, r
@@ -201,7 +201,7 @@ in
       windowrulev2 = workspace: 2, class:(Alacritty)
       windowrulev2 = workspace: 3, class:(firefox)
       windowrulev2 = workspace: 4, class:(Spotify)
-      windowrulev2 = workspace: 1, class:(dev.zed.Zed)
+      windowrulev2 = workspace: 3, class:(zen-beta)
       windowrulev2 = workspace: 1, class:(Code)
 
       debug {

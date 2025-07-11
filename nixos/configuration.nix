@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, zen-browser, ... }:
 
 {
 	imports =
@@ -32,6 +32,9 @@
 
 	nixpkgs.config.allowUnfree = true;
 
+	home-manager.useGlobalPkgs = true;
+	home-manager.useUserPackages = true;
+
 # networking.hostName = "nixos"; # Define your hostname.
 # Pick only one of the below networking options.
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -48,7 +51,7 @@
 			extraGroups = [ "wheel" "networkmanager" "audio" "media" "input" "docker" ];
 			group = "users";
 			home = "/home/dima";
-			shell = "/run/current-system/sw/bin/bash";
+			shell = "/run/current-system/sw/bin/fish";
 			uid = 1234;
 			isNormalUser=true;
 		};
@@ -104,7 +107,6 @@ environment.systemPackages = with pkgs; [
 		neofetch
 		pipewire
 		hyprland
-		kitty
 		firefox
 		home-manager
 		gdm
@@ -113,7 +115,6 @@ environment.systemPackages = with pkgs; [
 		wl-clipboard
 		git
 		lsd
-		vscode
 		graphite-gtk-theme
 		papirus-icon-theme
 		adwaita-icon-theme
@@ -129,7 +130,6 @@ environment.systemPackages = with pkgs; [
 		dotnetCorePackages.aspnetcore_9_0-bin
 		docker_28
 		telegram-desktop
-		zed-editor
 		spotify
 		python3
 		unzip
@@ -141,6 +141,20 @@ environment.systemPackages = with pkgs; [
 		btop
 		htop
 		cmatrix
+		python313Packages.pip
+		pyenv
+		neovim
+		yarn
+		gnumake
+		nil
+		csharp-ls
+		zen-browser.packages.x86_64-linux.default
+		fish
+		uv
+		insomnia
+		postman
+		dotnet-ef
+		postgresql
 ];
 
 # Some programs need SUID wrappers, can be configured further or are
@@ -194,5 +208,5 @@ programs.dconf.enable = true;
 virtualisation.docker = {
   enable = true;
 };
-}
 
+}

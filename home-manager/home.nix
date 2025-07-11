@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+    nixpkgs.config.allowUnfree = true;
+
     home = {
         username = "dima";
         homeDirectory= "/home/dima";
@@ -20,12 +22,13 @@
     };
 
     imports = [
-        ./bash.nix
+        ./fish/fish.nix
         ./alacritty.nix
         ./hyprland.nix
         ./waybar.nix
         ./wofi.nix
         ./gtk.nix
         ./git.nix
+        ./nvim/nvim.nix
     ];
 }
