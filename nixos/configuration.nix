@@ -154,7 +154,6 @@ environment.systemPackages = with pkgs; [
 		insomnia
 		postman
 		dotnet-ef
-		postgresql
 ];
 
 # Some programs need SUID wrappers, can be configured further or are
